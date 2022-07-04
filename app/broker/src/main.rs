@@ -1,20 +1,15 @@
-use std::net::UdpSocket;
+use tokio::net::UdpSocket;
+use std::io;
 
-fn main() -> std::io::Result<()> {
-    {
-     let socket = UdpSocket::bind("0.0.0.0:8888")?;
+#[tokio::main]
+async fn main() -> io::Result<()> {
+    let sock = UdpSocket::bind("0.0.0.0:8080").await?;
+    let mut buf = [0; 1024];
+    loop {
+        let (len, addr) = sock.recv_from(&mut buf).await?;
+        println!("{:?} bytes received from {:?}", len, addr);
 
-        // Receives a single datagram message on the socket. If `buf` is too small to hold
-        // the message, it will be cut off.
-        let mut buf = [0; 10];
-        println!("{:?}",&mut buf);
-        let (amt, src) = socket.recv_from(&mut buf)?;
-
-        // Redeclare `buf` as slice of the received data and send reverse data back to origin.
-        let buf = &mut buf[..amt];
-        buf.reverse();
-        // println!("{}",&mut buf);
-        socket.send_to(buf, &src)?;
-    } // the socket is closed here
-    Ok(())
+        let len = sock.send_to(&buf[..len], addr).await?;
+        println!("{:?} bytes sent", len);
+    }
 }
