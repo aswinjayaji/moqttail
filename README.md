@@ -1,7 +1,5 @@
-A simple MQTT-SN cient and broker in Rust
-
 # MOQTTAIL
-MQTT-SN Client and Broker
+A simple MQTT-SN cient and broker in Rust
 
 ## MQTT-SN Broker 
 ```
