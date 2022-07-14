@@ -20,7 +20,6 @@ use tokio::net::UdpSocket;
 use tokio::sync::mpsc::Sender;
 use std::net::SocketAddr;
 
-/// Client Error
 #[derive(Debug, thiserror::Error)]
 pub enum ClientError {
     #[error("Len Error: {0} (expeted {1})")]
@@ -28,7 +27,6 @@ pub enum ClientError {
     #[error("Wrong Message Type: {0} (expect {1}")]
     WrongMessageType(u8, u8),
 
-    // return code
     #[error("Congestion: {0}")]
     Congestion(u8),
     #[error("Invalid Topic Id: {0}")]
@@ -39,8 +37,6 @@ pub enum ClientError {
     Reserved(u8),
 }
 
-
-// TODO move to utility lib
 macro_rules! function {
     () => {{
         fn f() {}
@@ -64,18 +60,15 @@ macro_rules! dbg_buf {
     };
 }
 
-// dbg macro that prints function name instead of file name.
-// https://stackoverflow.com/questions/65946195/understanding-the-dbg-macro-in-rust
 macro_rules! dbg_fn {
     () => {
         $crate::eprintln!("[{}:{}]", function!(), line!());
     };
     ($val:expr $(,)?) => {
-        // Use of `match` here is intentional because it affects the lifetimes
-        // of temporaries - https://stackoverflow.com/a/48732525/1063961
+
         match $val {
             tmp => {
-                // replace file!() with function!()
+            
                 eprintln!("[{}:{}] {} = {:#?}",
                     function!(), line!(), stringify!($val), &tmp);
                 tmp
@@ -91,7 +84,7 @@ macro_rules! dbg_fn {
 pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option<u8> {
     let mut offset = 0;
     let len: u8 = buf[offset];
-    // if len != size, ignore the packet
+    
     if size != len as usize {
         error!("size({}) != len({}).", size, len);
         return None;
@@ -107,8 +100,7 @@ pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option
             let _ = new_machine
                 .machine
                 .consume(&msg_type.unwrap(), transfer, &buf, size);
-            // TODO check for return value
-            // if return error, clear the egress_buffer
+
             transfer
                 .connection_db
                 .update(transfer.peer, &old_machine, &new_machine);
@@ -116,11 +108,9 @@ pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option
             dbg!(new_machine.machine.state());
 
             let state = new_machine.machine.state();
-            // Some(1)
-            // ()
+
         }
         None => {
-            // packet without state machine
             dbg!(buf[1]);
             match FromPrimitive::from_u8(buf[1]) {
                 Some(MsgType::CONNACK) => {
@@ -130,7 +120,6 @@ pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option
                     let _ = new_machine
                         .machine
                         .consume(&msg_type.unwrap(), transfer, &buf, size);
-                    // TODO check for return value
                     transfer.connection_db.create(transfer.peer, &new_machine);
                     dbg!(new_machine);
                 },
@@ -141,7 +130,6 @@ pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option
                     let _ = new_machine
                         .machine
                         .consume(&msg_type.unwrap(), transfer, &buf, size);
-                    // TODO check for return value
                     transfer.connection_db.create(transfer.peer, &new_machine);
                     dbg!(new_machine);
                 },
@@ -150,7 +138,6 @@ pub fn process_input(buf: &[u8], size: usize, transfer: &mut Transfer) -> Option
         }
     }
     None
-    // Some(MsgType::MsgType::ACTIVE)
 }
 
 static PUBACK_LEN:u8 = 7;
@@ -164,7 +151,6 @@ pub fn pub_ack(topic_id: u16, msg_id: u16) -> BytesMut {
         return_code: 0,
     };
     let mut bytes_buf = BytesMut::with_capacity(PUBACK_LEN as usize);
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg!(pub_ack.clone());
     pub_ack.try_write(&mut bytes_buf);
     bytes_buf
@@ -181,7 +167,6 @@ pub fn publish(topic_id: u16, msg_id: u16, message: String, qos_level: i8) -> By
         data: message,
     };
     let mut bytes_buf = BytesMut::with_capacity(len);
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg!(publish.clone());
     publish.try_write(&mut bytes_buf);
     bytes_buf
@@ -194,10 +179,9 @@ pub fn subscribe(topic_name: String, msg_id: u16) -> BytesMut {
         msg_type: MsgType::SUBSCRIBE as u8,
         flags: 0b00100100,
         msg_id,
-        topic_name, // TODO use enum for topic_name or topic_id
+        topic_name, 
     };
     let mut bytes_buf = BytesMut::with_capacity(len);
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg!(subscribe.clone());
     subscribe.try_write(&mut bytes_buf);
     bytes_buf
@@ -214,12 +198,9 @@ pub fn connect2(client_id: String) -> BytesMut {
         client_id: client_id,
     };
     let mut bytes_buf = BytesMut::with_capacity(len);
-    // serialize the con_ack struct into byte(u8) array for the network.
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg_fn!(connect.clone());
     connect.try_write(&mut bytes_buf);
     dbg_fn!(bytes_buf.clone());
-    // return false of error, and set egree_buffers to empty.
     bytes_buf
 }
 
@@ -234,12 +215,9 @@ pub fn connect(socket: &UdpSocket, client_id: String) -> BytesMut {
         client_id: client_id,
     };
     let mut bytes_buf = BytesMut::with_capacity(len);
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg_fn!(connect.clone());
     connect.try_write(&mut bytes_buf);
     dbg_fn!(bytes_buf.clone());
-    // return false of error, and set egree_buffers to empty.
-    // let amt = socket.send(&bytes_buf[..]);
     bytes_buf
 }
 
@@ -263,26 +241,23 @@ fn return_code(val: u8) -> Result<(), ClientError> {
     }
 }
 
-// CONACK: len(0) MsgType(1) ReturnCode(2)
-// expect:     3          5
 pub fn verify_connack2(
     buf: &[u8],
     size: usize,
 ) -> Result<(), ClientError> {
-    // deserialize from u8 array to the Conn structure.
     let msg_type = MsgType::CONNACK;
     dbg_fn!(msg_type);
     let (conn_ack, read_len) = ConAck::try_read(buf, size, msg_type.into()).unwrap();
     dbg_fn!(conn_ack.clone());
 
-    // check length
+    
     if (read_len != 3) {
         return Err(ClientError::LenError(read_len, 3));
     }
 
-    // check message type
+    
     match conn_ack.msg_type {
-        // check return code
+        
         msg_type => return_code(conn_ack.return_code),
         _ => {
             Err(ClientError::WrongMessageType(conn_ack.return_code, msg_type.into()))
@@ -292,24 +267,20 @@ pub fn verify_connack2(
 pub fn verify_puback2(
     buf: &[u8],
     size: usize,
-// ) -> bool {
+
 ) -> Result<(u16, u16), ClientError> {
     let msg_type = MsgType::PUBACK;
     let (pub_ack, read_len) = PubAck::try_read(&buf, size, msg_type.into()).unwrap();
     dbg_fn!(pub_ack.clone());
 
-    // check length
+    
     if (read_len != 8) {
         return Err(ClientError::LenError(read_len, 8));
     }
 
-    // check message type
+    
     match pub_ack.msg_type {
-        // TODO check flags
-        //
-        // TODO match msg_id & topic_id
-        //
-        // check return code
+
         msg_type => {
             match return_code(pub_ack.return_code) {
                 Ok(_) => Ok((pub_ack.topic_id, pub_ack.msg_id)),
@@ -326,24 +297,20 @@ pub fn verify_puback2(
 pub fn verify_suback2(
     buf: &[u8],
     size: usize,
-// ) -> bool {
+
 ) -> Result<u16, ClientError> {
     let msg_type = MsgType::CONNACK;
     let (sub_ack, read_len) = SubAck::try_read(&buf, size, msg_type.into()).unwrap();
     dbg_fn!(sub_ack.clone());
 
-    // check length
+    
     if (read_len != 8) {
         return Err(ClientError::LenError(read_len, 8));
     }
 
-    // check message type
+    
     match sub_ack.msg_type {
-        // TODO check flags
-        //
-        // TODO match msg_id & topic_id
-        //
-        // check return code
+
         msg_type => {
             match return_code(sub_ack.return_code) {
                 Ok(_) => Ok(sub_ack.msg_id),
@@ -367,27 +334,15 @@ pub fn verify_publish3(
     dbg_fn!(publish.clone());
     dbg_fn!((size, read_len));
 
-    // check length
-    /*
-    if (read_len != size) {
-        return Err(ClientError::LenError(read_len, size));
-    }
-    */
 
-    // check message type
     match publish.msg_type {
-        // TODO check flags
-        //
-        // TODO match msg_id & topic_id
-        //
-        // check return code
+
         msg_type => {
             dbg_fn!(publish.flags);
             println!("{:b}", publish.flags);
             println!("{:?}", get_qos_level(publish.flags));
             let mut bytes_buf = BytesMut::with_capacity(MTU);
             match get_qos_level(publish.flags) {
-                // send PUCACK for QoS 1 & 2
                 1 | 2 => {
                     bytes_buf = pub_ack(publish.topic_id, publish.msg_id);
                     dbg_fn!(&bytes_buf);
@@ -408,26 +363,15 @@ pub fn verify_publish2(
     buf: &[u8],
     size: usize,
 ) -> Result<(u16,u16, String), ClientError> {
-// ) -> Result<(u16,u16, String, BytesMut), ClientError> {
+
     let msg_type = MsgType::PUBLISH;
     let (publish, read_len) = Publish::try_read(&buf, size, msg_type.into()).unwrap();
     dbg_fn!(publish.clone());
     dbg_fn!((size, read_len));
 
-    // check length
-    /*
-    if (read_len != size) {
-        return Err(ClientError::LenError(read_len, size));
-    }
-    */
 
-    // check message type
     match publish.msg_type {
-        // TODO check flags
-        //
-        // TODO match msg_id & topic_id
-        //
-        // check return code
+
         msg_type => {
             dbg_fn!(publish.flags);
             Ok((publish.topic_id, publish.msg_id, publish.data))
@@ -471,12 +415,9 @@ pub fn publish_socket(socket: &UdpSocket, topic_id: u16, msg: String) -> BytesMu
         data: msg.to_string(),
     };
     let mut bytes_buf = BytesMut::with_capacity(MTU);
-    // serialize the con_ack struct into byte(u8) array for the network.
     dbg_fn!(publish.clone());
     publish.try_write(&mut bytes_buf);
     dbg_fn!(bytes_buf.clone());
-    // return false of error, and set egree_buffers to empty.
-    // let amt = socket.send(&bytes_buf[..]);
     bytes_buf
 }
 
