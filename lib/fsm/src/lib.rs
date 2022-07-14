@@ -125,7 +125,7 @@
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use bytes::{BytesMut, BufMut};
+
 use core::fmt;
 #[cfg(feature = "std")]
 use std::error::Error;

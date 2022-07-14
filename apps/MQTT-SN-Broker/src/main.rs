@@ -21,7 +21,7 @@ use std::io::{self};
 
 use mqtt_sn_lib::{
     ConnectionDb::ConnectionDb, SubscriberDb::SubscriberDb, TopicDb::TopicDb,
-    Transfer::Transfer, Functions::process_input, MTU,BroadcastAdvertise::BroadcastAdvertise
+    Transfer::Transfer, Functions::process_input, MTU
 };
 
 
@@ -45,27 +45,6 @@ macro_rules! dbg_buf {
             i += 1;
         }
         eprintln!("");
-    };
-}
-
-
-macro_rules! dbg_fn {
-    () => {
-        $crate::eprintln!("[{}:{}]", function!(), line!());
-    };
-    ($val:expr $(,)?) => {
-        
-        match $val {
-            tmp => {
-                
-                eprintln!("[{}:{}] {} = {:#?}",
-                    function!(), line!(), stringify!($val), &tmp);
-                tmp
-            }
-        }
-    };
-    ($($val:expr),+ $(,)?) => {
-        ($($dbg_fn!($val)),+,)
     };
 }
 
@@ -117,9 +96,9 @@ impl Server {
 
             
             to_send = Some(socket.recv_from(&mut buf).await?);
-            let to_recv =socket.send_to(&buf, &peer).await?;
+            socket.send_to(&buf, &peer).await?;
             
-            let mut temp = buf.clone();
+            let  temp = buf.clone();
             let s = match str::from_utf8(&temp) {
                 Ok(v) => v,
                 Err(e) => panic!("Invalid UTF-8 sequence: {}", e),
@@ -166,23 +145,6 @@ async fn timing_wheel2() {
 }
 
 
-fn bind_multicast(
-    addr: &SocketAddrV4,
-    multi_addr: &SocketAddrV4,
-) -> Result<std::net::UdpSocket, Box<dyn Error>> {
-    use socket2::{Domain, Protocol, Socket, Type};
-
-    assert!(multi_addr.ip().is_multicast(), "Must be multcast address");
-
-    let socket = Socket::new(Domain::ipv4(), Type::dgram(), Some(Protocol::udp()))?;
-
-    socket.set_reuse_address(true)?;
-    socket.bind(&socket2::SockAddr::from(*addr))?;
-    socket.set_multicast_loop_v4(true)?;
-    socket.join_multicast_v4(multi_addr.ip(), addr.ip())?;
-
-    Ok(socket.into_udp_socket())
-}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -205,7 +167,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         topic_db: TopicDb::new(),
     };
 
-    let server_address: SocketAddr = "0.0.0.0:61000".parse().unwrap();
+    // let server_address: SocketAddr = "0.0.0.0:61000".parse().unwrap();
     let addr = SocketAddrV4::new(IP_ALL.into(), DEFAULT_MULTICAST_PORT);
 
     let multi_addr = SocketAddrV4::new(
@@ -219,21 +181,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     println!("Starting server on: {}", addr);
     println!("Multicast address: {}\n", multi_addr);
-
-    let std_socket = bind_multicast(&addr, &multi_addr).expect("Failed to bind multicast socket");
-
-    let socket = UdpSocket::from_std(std_socket).unwrap();
-
-    let ss: SocketAddr = multi_addr.into();
-    let broadcast_advertise = BroadcastAdvertise {
-        socket,
-        addr: ss,
-        buf: [0u8; MTU], // Ethernet MTU
-        to_send: None,
-        connection_db: ConnectionDb::new("/tmp/exo-sn-db2".to_string()).unwrap(),
-        subscriber_db: SubscriberDb::new(),
-        topic_db: TopicDb::new(),
-    };
 
     let resp1 = task::spawn(timing_wheel());
     let resp2 = task::spawn(timing_wheel2());

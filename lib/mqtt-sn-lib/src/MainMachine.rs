@@ -2,8 +2,6 @@ use crate::ConAck::ConAck;
 use crate::Connect::Connect;
 use crate::Disconnect::Disconnect;
 use crate::MsgType::MsgType;
-use crate::PingReq::PingReq;
-use crate::PingResp::PingResp;
 use crate::Publish::Publish;
 use crate::RegAck::RegAck;
 use crate::Register::Register;
@@ -13,12 +11,7 @@ use crate::Subscribe::Subscribe;
 use crate::Transfer::Transfer;
 use crate::UnsubAck::UnsubAck;
 use crate::Unsubscribe::Unsubscribe;
-use crate::WillMsg::WillMsg;
-use crate::WillMsgResp::WillMsgResp;
-use crate::WillMsgUpd::WillMsgUpd;
-use crate::WillTopic::WillTopic;
-use crate::WillTopicResp::WillTopicResp;
-use crate::WillTopicUpd::WillTopicUpd;
+
 use crate::MTU;
 use crate::Flags::{QoS::QoS,TopicIdType::TopicIdType};
 
@@ -43,15 +36,15 @@ state_machine! {
 
     ACTIVE => {
         PUBLISH => verify_publish ? ACTIVE[PUBLISH] : ACTIVE[MSG_TYPE_ERR],
-        PINGREQ => verify_ping_req ? ACTIVE[SUBACK] : ACTIVE[MSG_TYPE_ERR],
-        WILLTOPIC => verify_will_topic ? ACTIVE[MSG_TYPE_ERR] : ACTIVE[MSG_TYPE_ERR],
-        WILLMSG => verify_will_msg ? ACTIVE[MSG_TYPE_ERR] : ACTIVE[MSG_TYPE_ERR],
+        // PINGREQ => verify_ping_req ? ACTIVE[SUBACK] : ACTIVE[MSG_TYPE_ERR],
+        // WILLTOPIC => verify_will_topic ? ACTIVE[MSG_TYPE_ERR] : ACTIVE[MSG_TYPE_ERR],
+        // WILLMSG => verify_will_msg ? ACTIVE[MSG_TYPE_ERR] : ACTIVE[MSG_TYPE_ERR],
         SUBSCRIBE => verify_subscribe ? ACTIVE[SUBACK] : ACTIVE[MSG_TYPE_ERR],
         REGISTER => verify_register ? ACTIVE[SUBACK] : ACTIVE[MSG_TYPE_ERR],
         UNSUBSCRIBE => verify_unsubscribe ? ACTIVE[SUBACK] : ACTIVE[MSG_TYPE_ERR],
         DISCONNECT => verify_disconnect ? ASLEEP[DISCONNECT] : ACTIVE[MSG_TYPE_ERR],
-        WILLTOPICUPD => verify_will_topic_update ? ACTIVE[WILLTOPICRESP] : ACTIVE[MSG_TYPE_ERR],
-        WILLMSGUPD => verify_will_msg_update ? ACTIVE[WILLMSGRESP] : ACTIVE[MSG_TYPE_ERR],
+        // WILLTOPICUPD => verify_will_topic_update ? ACTIVE[WILLTOPICRESP] : ACTIVE[MSG_TYPE_ERR],
+        // WILLMSGUPD => verify_will_msg_update ? ACTIVE[WILLMSGRESP] : ACTIVE[MSG_TYPE_ERR],
     },
 
     DISCONNECTED => {
@@ -96,24 +89,6 @@ fn verify_publish(
     }
 }
 
-fn verify_ping_req(
-    _state: StateEnum,
-    input: MsgType,
-    transfer: &mut Transfer,
-    buf: &[u8],
-    size: usize,
-) -> bool {
-    let (ping_req, _read_len) = PingReq::try_read(&buf, size, input.into()).unwrap();
-    dbg!(ping_req.clone());
-    let ping_resp = PingResp {
-        len: 2,
-        msg_type: MsgType::PINGRESP as u8,
-    };
-    let mut bytes_buf = BytesMut::with_capacity(MTU);
-    ping_resp.try_write(&mut bytes_buf);
-    transfer.egress_buffers.push((transfer.peer, bytes_buf));
-    true
-}
 
 fn verify_connect(
     _state: StateEnum,
@@ -136,45 +111,6 @@ fn verify_connect(
     true
 }
 
-fn verify_will_msg_update(
-    _state: StateEnum,
-    input: MsgType,
-    transfer: &mut Transfer,
-    buf: &[u8],
-    size: usize,
-) -> bool {
-    let (will_msg_update, _read_len) = WillMsgUpd::try_read(&buf, size, input.into()).unwrap();
-    dbg!(will_msg_update.clone());
-    let will_msg_resp = WillMsgResp {
-        len: 3,
-        msg_type: MsgType::WILLMSGRESP as u8,
-        return_code: 0, 
-    };
-    let mut bytes_buf = BytesMut::with_capacity(MTU);
-    will_msg_resp.try_write(&mut bytes_buf);
-    transfer.egress_buffers.push((transfer.peer, bytes_buf));
-    true
-}
-
-fn verify_will_topic_update(
-    _state: StateEnum,
-    input: MsgType,
-    transfer: &mut Transfer,
-    buf: &[u8],
-    size: usize,
-) -> bool {
-    let (will_topic_update, _read_len) = WillTopicUpd::try_read(&buf, size, input.into()).unwrap();
-    dbg!(will_topic_update.clone());
-    let will_topic_resp = WillTopicResp {
-        len: 3,
-        msg_type: MsgType::WILLTOPICRESP as u8,
-        return_code: 0, 
-    };
-    let mut bytes_buf = BytesMut::with_capacity(MTU);
-    will_topic_resp.try_write(&mut bytes_buf);
-    transfer.egress_buffers.push((transfer.peer, bytes_buf));
-    true
-}
 
 fn verify_unsubscribe(
     _state: StateEnum,
@@ -318,28 +254,4 @@ dbg!(topic_id_type);
     true
 }
 
-fn verify_will_msg(
-    _state: StateEnum,
-    input: MsgType,
-    transfer: &mut Transfer,
-    buf: &[u8],
-    size: usize,
-) -> bool {
-    let (will_msg, _read_len) = WillMsg::try_read(&buf, size, input.into()).unwrap();
-    dbg!(will_msg.clone());
 
-    true
-}
-
-fn verify_will_topic(
-    _state: StateEnum,
-    input: MsgType,
-    transfer: &mut Transfer,
-    buf: &[u8],
-    size: usize,
-) -> bool {
-    let (will_topic, _read_len) = WillTopic::try_read(&buf, size, input.into()).unwrap();
-    dbg!(will_topic.clone());
-
-    true
-}

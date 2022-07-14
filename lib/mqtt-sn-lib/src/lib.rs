@@ -34,6 +34,5 @@ mod WillTopicReq;
 mod WillTopicResp;
 mod WillTopicUpd;
 pub mod Flags;
-pub mod BroadcastAdvertise;
 
 pub const MTU: usize = 1500;
