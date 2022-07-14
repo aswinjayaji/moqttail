@@ -1,0 +1,14 @@
+[package]
+name = "dtls-cli"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+webrtc-dtls = {path = "./webrtc-dtls"}
+#webrtc-dtls="0.3.1"
+structopt = "0.3.22"
+webrtc-util = "0.3.1"
+tokio={version="1.0",features=["full"]}
+anyhow="1.0.41"

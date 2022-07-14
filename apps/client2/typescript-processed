@@ -1,0 +1,2119 @@
+Script started on 2022-01-04 14:52:21-0800
+
+lawrence silver ~/work/exofense/Exofense-main/apps/MQTT-SN-Client is 📦 v0.1.0 via 🦀 v1.53.0
+➜ cargo run
+warning: unused imports: `BufMut`, `BytesMut`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/fsm/src/lib.rs:128:13
+    |
+128 | use bytes::{BytesMut, BufMut};
+    |		  ^^^^^^^^  ^^^^^^
+    |
+    = note: `#[warn(unused_imports)]` on by default
+
+warning: 1 warning emitted
+
+warning: unused imports: `BufMut`, `BytesMut`
+ --> /home/lawrence/work/exofense/Exofense-main/lib/getset/src/generate.rs:8:13
+  |
+8 | use bytes::{BytesMut, BufMut};
+  |		^^^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `BufMut`, `BytesMut`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/getset/src/lib.rs:16:13
+   |
+16 | use bytes::{BufMut, BytesMut};
+   |		 ^^^^^^  ^^^^^^^^
+
+warning: 2 warnings emitted
+
+[/home/lawrence/work/exofense/Exofense-main/lib/fsm/rust_fsm_dsl/src/lib.rs:91] transfer_struct_name.clone() = Ident {
+    ident: "Transfer",
+    span: #0 bytes(12311..12319),
+}
+warning: type `MQTT_SN` should have an upper camel case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/MainMachine.rs:50:9
+   |
+50 |	 pub MQTT_SN(DISCONNECTED)
+   |	     ^^^^^^^ help: convert the identifier to upper camel case: `MqttSn`
+   |
+   = note: `#[warn(non_camel_case_types)]` on by default
+
+warning: variant `MSG_TYPE_ERR` should have an upper camel case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/MsgType.rs:37:5
+   |
+37 |	 MSG_TYPE_ERR = 0xFF,
+   |	 ^^^^^^^^^^^^ help: convert the identifier to upper camel case: `MsgTypeErr`
+
+warning: variable does not need to be mutable
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:34:13
+   |
+34 |		 mut buf,
+   |		 ----^^^
+   |		 |
+   |		 help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:35:13
+   |
+35 |		 mut to_send,
+   |		 ----^^^^^^^
+   |		 |
+   |		 help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:44:13
+   |
+44 |	     let mut transfer = Transfer {
+   |		 ----^^^^^^^^
+   |		 |
+   |		 help: remove this `mut`
+
+warning: unused variable: `socket`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Functions.rs:90:16
+   |
+90 | pub fn connect(socket: &UdpSocket) -> BytesMut {
+   |		    ^^^^^^ help: if this is intentional, prefix it with an underscore: `_socket`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/MainMachine.rs:363:5
+    |
+363 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/MainMachine.rs:377:5
+    |
+377 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `topic_string`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/TopicDb.rs:53:30
+   |
+53 |	 pub fn delete(&mut self, topic_string: &String) -> Option<u16> {
+   |				  ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_topic_string`
+
+warning: unused variable: `buf`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:34:13
+   |
+34 |		 mut buf,
+   |		 ^^^^^^^ help: try ignoring the field: `buf: _`
+
+warning: unused variable: `to_send`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:35:13
+   |
+35 |		 mut to_send,
+   |		 ^^^^^^^^^^^ help: try ignoring the field: `to_send: _`
+
+warning: unused variable: `transfer`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/BroadcastAdvertise.rs:44:17
+   |
+44 |	     let mut transfer = Transfer {
+   |		     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Advertise.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Advertise.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_gw_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Advertise.rs:26:8
+   |
+26 |	 fn constraint_gw_id(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_duration`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Advertise.rs:30:8
+   |
+30 |	 fn constraint_duration(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/ConAck.rs:15:12
+   |
+15 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/ConAck.rs:19:12
+   |
+19 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/ConAck.rs:23:12
+   |
+23 |	 pub fn constraint_return_code(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Disconnect.rs:16:12
+   |
+16 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Disconnect.rs:20:12
+   |
+20 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_duration`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Disconnect.rs:24:12
+   |
+24 |	 pub fn constraint_duration(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/PingReq.rs:16:12
+   |
+16 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/PingReq.rs:20:12
+   |
+20 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_client_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/PingReq.rs:24:12
+   |
+24 |	 pub fn constraint_client_id(_val: &u64) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/PingResp.rs:14:12
+   |
+14 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/PingResp.rs:18:12
+   |
+18 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:21:12
+   |
+21 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:25:12
+   |
+25 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:29:12
+   |
+29 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:33:12
+   |
+33 |	 pub fn constraint_topic_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:37:12
+   |
+37 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_data`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Publish.rs:41:12
+   |
+41 |	 pub fn constraint_data(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/RegAck.rs:18:12
+   |
+18 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/RegAck.rs:22:12
+   |
+22 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/RegAck.rs:26:12
+   |
+26 |	 pub fn constraint_topic_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/RegAck.rs:30:12
+   |
+30 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/RegAck.rs:34:12
+   |
+34 |	 pub fn constraint_return_code(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Register.rs:19:12
+   |
+19 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Register.rs:23:12
+   |
+23 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Register.rs:27:12
+   |
+27 |	 pub fn constraint_topic_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Register.rs:31:12
+   |
+31 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Register.rs:35:12
+   |
+35 |	 pub fn constraint_topic_name(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SearchGw.rs:15:12
+   |
+15 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SearchGw.rs:19:12
+   |
+19 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_radius`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SearchGw.rs:23:12
+   |
+23 |	 pub fn constraint_radius(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/GwInfo.rs:19:12
+   |
+19 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/GwInfo.rs:23:12
+   |
+23 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_gw_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/GwInfo.rs:27:12
+   |
+27 |	 pub fn constraint_gw_id(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_gw_add`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/GwInfo.rs:31:12
+   |
+31 |	 pub fn constraint_gw_add(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:20:12
+   |
+20 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:24:12
+   |
+24 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:28:12
+   |
+28 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:32:12
+   |
+32 |	 pub fn constraint_topic_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:36:12
+   |
+36 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/SubAck.rs:40:12
+   |
+40 |	 pub fn constraint_return_code(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Subscribe.rs:20:12
+   |
+20 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Subscribe.rs:24:12
+   |
+24 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Subscribe.rs:28:12
+   |
+28 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Subscribe.rs:32:12
+   |
+32 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Subscribe.rs:36:12
+   |
+36 |	 pub fn constraint_topic_name(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `any_as_u8_slice`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/TopicDb.rs:91:11
+   |
+91 | unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
+   |	       ^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/UnsubAck.rs:17:12
+   |
+17 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/UnsubAck.rs:21:12
+   |
+21 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/UnsubAck.rs:25:12
+   |
+25 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Unsubscribe.rs:20:12
+   |
+20 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Unsubscribe.rs:24:12
+   |
+24 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Unsubscribe.rs:28:12
+   |
+28 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Unsubscribe.rs:32:12
+   |
+32 |	 pub fn constraint_msg_id(_val: &u16) -> bool {
+   |		^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Unsubscribe.rs:36:12
+   |
+36 |	 pub fn constraint_topic_name(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsg.rs:18:12
+   |
+18 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsg.rs:22:12
+   |
+22 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsg.rs:26:12
+   |
+26 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsg.rs:30:12
+   |
+30 |	 pub fn constraint_will_topic(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgReq.rs:15:12
+   |
+15 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgReq.rs:19:12
+   |
+19 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgResp.rs:15:12
+   |
+15 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgResp.rs:19:12
+   |
+19 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgResp.rs:23:12
+   |
+23 |	 pub fn constraint_return_code(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgUpd.rs:16:12
+   |
+16 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgUpd.rs:20:12
+   |
+20 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillMsgUpd.rs:24:12
+   |
+24 |	 pub fn constraint_will_topic(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopic.rs:18:12
+   |
+18 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopic.rs:22:12
+   |
+22 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopic.rs:26:12
+   |
+26 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopic.rs:30:12
+   |
+30 |	 pub fn constraint_will_topic(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicReq.rs:16:12
+   |
+16 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicReq.rs:20:12
+   |
+20 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicResp.rs:15:12
+   |
+15 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicResp.rs:19:12
+   |
+19 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicResp.rs:23:12
+   |
+23 |	 pub fn constraint_return_code(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicUpd.rs:18:12
+   |
+18 |	 pub fn constraint_len(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicUpd.rs:22:12
+   |
+22 |	 pub fn constraint_msg_type(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicUpd.rs:26:12
+   |
+26 |	 pub fn constraint_flags(_val: &u8) -> bool {
+   |		^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/WillTopicUpd.rs:30:12
+   |
+30 |	 pub fn constraint_will_topic(_val: &String) -> bool {
+   |		^^^^^^^^^^^^^^^^^^^^^
+
+warning: module `Advertise` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:4:9
+  |
+4 | pub mod Advertise;
+  |	    ^^^^^^^^^ help: convert the identifier to snake case: `advertise`
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+
+warning: module `ConAck` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:5:5
+  |
+5 | mod ConAck;
+  |	^^^^^^ help: convert the identifier to snake case: `con_ack`
+
+warning: module `Connect` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:6:9
+  |
+6 | pub mod Connect;
+  |	    ^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `connect`
+
+warning: module `ConnectionDb` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:7:9
+  |
+7 | pub mod ConnectionDb;
+  |	    ^^^^^^^^^^^^ help: convert the identifier to snake case: `connection_db`
+
+warning: module `Disconnect` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:8:5
+  |
+8 | mod Disconnect;
+  |	^^^^^^^^^^ help: convert the identifier to snake case: `disconnect`
+
+warning: module `Functions` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:9:9
+  |
+9 | pub mod Functions;
+  |	    ^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `functions`
+
+warning: module `MainMachine` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:10:9
+   |
+10 | pub mod MainMachine;
+   |	     ^^^^^^^^^^^ help: convert the identifier to snake case: `main_machine`
+
+warning: module `MessageDb` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:11:9
+   |
+11 | pub mod MessageDb;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case: `message_db`
+
+warning: module `MsgType` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:12:9
+   |
+12 | pub mod MsgType;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `msg_type`
+
+warning: module `PingReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:13:5
+   |
+13 | mod PingReq;
+   |	 ^^^^^^^ help: convert the identifier to snake case: `ping_req`
+
+warning: module `PingResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:14:5
+   |
+14 | mod PingResp;
+   |	 ^^^^^^^^ help: convert the identifier to snake case: `ping_resp`
+
+warning: module `Publish` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:15:5
+   |
+15 | mod Publish;
+   |	 ^^^^^^^ help: convert the identifier to snake case: `publish`
+
+warning: module `RegAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:16:5
+   |
+16 | mod RegAck;
+   |	 ^^^^^^ help: convert the identifier to snake case: `reg_ack`
+
+warning: module `Register` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:17:5
+   |
+17 | mod Register;
+   |	 ^^^^^^^^ help: convert the identifier to snake case: `register`
+
+warning: module `SearchGw` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:18:5
+   |
+18 | mod SearchGw;
+   |	 ^^^^^^^^ help: convert the identifier to snake case: `search_gw`
+
+warning: module `GwInfo` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:19:5
+   |
+19 | mod GwInfo;
+   |	 ^^^^^^ help: convert the identifier to snake case: `gw_info`
+
+warning: module `StateEnum` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:20:9
+   |
+20 | pub mod StateEnum;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case: `state_enum`
+
+warning: module `SubAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:21:5
+   |
+21 | mod SubAck;
+   |	 ^^^^^^ help: convert the identifier to snake case: `sub_ack`
+
+warning: module `Subscribe` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:22:5
+   |
+22 | mod Subscribe;
+   |	 ^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `subscribe`
+
+warning: module `SubscriberDb` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:23:9
+   |
+23 | pub mod SubscriberDb;
+   |	     ^^^^^^^^^^^^ help: convert the identifier to snake case: `subscriber_db`
+
+warning: module `TopicDb` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:24:9
+   |
+24 | pub mod TopicDb;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `topic_db`
+
+warning: module `Transfer` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:25:9
+   |
+25 | pub mod Transfer;
+   |	     ^^^^^^^^ help: convert the identifier to snake case: `transfer`
+
+warning: module `UnsubAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:26:5
+   |
+26 | mod UnsubAck;
+   |	 ^^^^^^^^ help: convert the identifier to snake case: `unsub_ack`
+
+warning: module `Unsubscribe` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:27:5
+   |
+27 | mod Unsubscribe;
+   |	 ^^^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `unsubscribe`
+
+warning: module `WillMsg` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:28:5
+   |
+28 | mod WillMsg;
+   |	 ^^^^^^^ help: convert the identifier to snake case: `will_msg`
+
+warning: module `WillMsgReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:29:5
+   |
+29 | mod WillMsgReq;
+   |	 ^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_req`
+
+warning: module `WillMsgResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:30:5
+   |
+30 | mod WillMsgResp;
+   |	 ^^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_resp`
+
+warning: module `WillMsgUpd` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:31:5
+   |
+31 | mod WillMsgUpd;
+   |	 ^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_upd`
+
+warning: module `WillTopic` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:32:5
+   |
+32 | mod WillTopic;
+   |	 ^^^^^^^^^ help: convert the identifier to snake case: `will_topic`
+
+warning: module `WillTopicReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:33:5
+   |
+33 | mod WillTopicReq;
+   |	 ^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_req`
+
+warning: module `WillTopicResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:34:5
+   |
+34 | mod WillTopicResp;
+   |	 ^^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_resp`
+
+warning: module `WillTopicUpd` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:35:5
+   |
+35 | mod WillTopicUpd;
+   |	 ^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_upd`
+
+warning: module `Flags` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:36:9
+   |
+36 | pub mod Flags;
+   |	     ^^^^^ help: convert the identifier to snake case (notice the capitalization): `flags`
+
+warning: module `BroadcastAdvertise` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/lib.rs:37:9
+   |
+37 | pub mod BroadcastAdvertise;
+   |	     ^^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `broadcast_advertise`
+
+warning: unused `Result` that must be used
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Functions.rs:64:13
+   |
+64 | /		   transfer
+65 | |		       .connection_db
+66 | |		       .update(transfer.peer, &old_machine, &new_machine);
+   | |___________________________________________________________________^
+   |
+   = note: `#[warn(unused_must_use)]` on by default
+   = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: unused `Result` that must be used
+  --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Functions.rs:80:21
+   |
+80 |			 transfer.connection_db.create(transfer.peer, &new_machine);
+   |			 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: variable `QoS` should have a snake case name
+   --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/MainMachine.rs:352:5
+    |
+352 | let QoS = QoS::new(sub.flags);
+    |	  ^^^ help: convert the identifier to snake case: `qo_s`
+
+warning: module `QoS` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Flags.rs:1:9
+  |
+1 | pub mod QoS;
+  |	    ^^^ help: convert the identifier to snake case: `qo_s`
+
+warning: module `DUP` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Flags.rs:2:9
+  |
+2 | pub mod DUP;
+  |	    ^^^ help: convert the identifier to snake case: `dup`
+
+warning: module `Retain` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Flags.rs:3:9
+  |
+3 | pub mod Retain;
+  |	    ^^^^^^ help: convert the identifier to snake case: `retain`
+
+warning: module `TopicIdType` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/mqtt-sn-lib/src/Flags.rs:4:9
+  |
+4 | pub mod TopicIdType;
+  |	    ^^^^^^^^^^^ help: convert the identifier to snake case: `topic_id_type`
+
+warning: 136 warnings emitted
+
+[/home/lawrence/work/exofense/Exofense-main/lib/fsm/rust_fsm_dsl/src/lib.rs:91] transfer_struct_name.clone() = Ident {
+    ident: "Transfer",
+    span: #0 bytes(21840..21848),
+}
+warning: unnecessary parentheses around `if` condition
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:239:8
+    |
+239 |	  if (read_len != 3) {
+    |	     ^^^^^^^^^^^^^^^ help: remove these parentheses
+    |
+    = note: `#[warn(unused_parens)]` on by default
+
+warning: unnecessary parentheses around `if` condition
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:263:8
+    |
+263 |	  if (read_len != 8) {
+    |	     ^^^^^^^^^^^^^^^ help: remove these parentheses
+
+warning: unused import: `crate::Connect::Connect`
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:2:5
+  |
+2 | use crate::Connect::Connect;
+  |	^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `MessageDb`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:27:4
+   |
+27 |	MessageDb,MessageDbKey,MessageDbValue
+   |	^^^^^^^^^
+
+warning: type `MQTT_SN` should have an upper camel case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:48:9
+   |
+48 |	 pub MQTT_SN(DISCONNECTED)
+   |	     ^^^^^^^ help: convert the identifier to upper camel case: `MqttSn`
+   |
+   = note: `#[warn(non_camel_case_types)]` on by default
+
+warning: variant `MSG_TYPE_ERR` should have an upper camel case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MsgType.rs:38:5
+   |
+38 |	 MSG_TYPE_ERR = 0xFF,
+   |	 ^^^^^^^^^^^^ help: convert the identifier to upper camel case: `MsgTypeErr`
+
+warning: unused import: `std::str`
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:5:5
+  |
+5 | use std::str;
+  |	^^^^^^^^
+
+warning: unused import: `std::str`
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubRel.rs:5:5
+  |
+5 | use std::str;
+  |	^^^^^^^^
+
+warning: unused imports: `MessageDbKey`, `MessageDbValue`
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Transfer.rs:7:15
+  |
+7 |	MessageDb,MessageDbKey,MessageDbValue
+  |		  ^^^^^^^^^^^^ ^^^^^^^^^^^^^^
+
+warning: unreachable pattern
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:247:9
+    |
+246 |	      msg_type => return_code(conn_ack.return_code),
+    |	      -------- matches any value
+247 |	      _ => {
+    |	      ^ unreachable pattern
+    |
+    = note: `#[warn(unreachable_patterns)]` on by default
+
+warning: unreachable pattern
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:280:9
+    |
+274 |	      msg_type => {
+    |	      -------- matches any value
+...
+280 |	      _ => {
+    |	      ^ unreachable pattern
+
+warning: unused variable: `state`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:115:17
+    |
+115 |		  let state = new_machine.machine.state();
+    |		      ^^^^^ help: if this is intentional, prefix it with an underscore: `_state`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `socket`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:186:16
+    |
+186 | pub fn connect(socket: &UdpSocket, client_id: String) -> BytesMut {
+    |		     ^^^^^^ help: if this is intentional, prefix it with an underscore: `_socket`
+
+warning: unused variable: `msg_type`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:246:9
+    |
+246 |	      msg_type => return_code(conn_ack.return_code),
+    |	      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_msg_type`
+
+warning: unused variable: `msg_type`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:274:9
+    |
+274 |	      msg_type => {
+    |	      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_msg_type`
+
+warning: unused variable: `socket`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:286:23
+    |
+286 | pub fn publish_socket(socket: &UdpSocket, topic_id: u16, msg: String) -> BytesMut {
+    |			    ^^^^^^ help: if this is intentional, prefix it with an underscore: `_socket`
+
+warning: unused variable: `result`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MessageDb.rs:89:21
+   |
+89 |		     let result = self.db.compare_and_swap(
+   |			 ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: unused variable: `result`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MessageDb.rs:96:21
+   |
+96 |		     let result = self.db.compare_and_swap(
+   |			 ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:140:5
+    |
+140 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:151:5
+    |
+151 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:164:5
+    |
+164 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:200:5
+    |
+200 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:221:5
+    |
+221 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:242:5
+    |
+242 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:291:5
+    |
+291 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:349:5
+    |
+349 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:371:5
+    |
+371 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `publish`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:436:25
+    |
+436 |			  let publish = Publish {
+    |			      ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_publish`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:585:5
+    |
+585 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:607:5
+    |
+607 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:646:5
+    |
+646 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `transfer`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:680:5
+    |
+680 |	  transfer: &mut Transfer,
+    |	  ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_transfer`
+
+warning: unused variable: `topic_string`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/TopicDb.rs:53:30
+   |
+53 |	 pub fn delete(&mut self, topic_string: &String) -> Option<u16> {
+   |				  ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_topic_string`
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConAck.rs:26:8
+   |
+26 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConAck.rs:30:8
+   |
+30 |	 fn constraint_msg_type(val: &u8) -> Result<(), ConnAckError> {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConAck.rs:44:8
+   |
+44 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Disconnect.rs:16:8
+   |
+16 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Disconnect.rs:20:8
+   |
+20 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_duration`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Disconnect.rs:24:8
+   |
+24 |	 fn constraint_duration(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MessageDb.rs:23:8
+   |
+23 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_message`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MessageDb.rs:37:8
+   |
+37 |	 fn constraint_message(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_will_topic`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:148:4
+    |
+148 | fn verify_will_topic(
+    |	 ^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_will_msg`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:161:4
+    |
+161 | fn verify_will_msg(
+    |	 ^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_will_topic_update`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:174:4
+    |
+174 | fn verify_will_topic_update(
+    |	 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_will_msg_update`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:266:4
+    |
+266 | fn verify_will_msg_update(
+    |	 ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_subscribe`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:505:4
+    |
+505 | fn verify_subscribe(
+    |	 ^^^^^^^^^^^^^^^^
+
+warning: function is never used: `verify_unsubscribe`
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:541:4
+    |
+541 | fn verify_unsubscribe(
+    |	 ^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PingReq.rs:16:8
+   |
+16 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PingReq.rs:20:8
+   |
+20 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_client_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PingReq.rs:24:8
+   |
+24 |	 fn constraint_client_id(_val: &u64) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PingResp.rs:14:8
+   |
+14 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PingResp.rs:18:8
+   |
+18 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:19:8
+   |
+19 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:23:8
+   |
+23 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:27:8
+   |
+27 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:31:8
+   |
+31 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubAck.rs:35:8
+   |
+35 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubRel.rs:17:8
+   |
+17 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubRel.rs:21:8
+   |
+21 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/PubRel.rs:25:8
+   |
+25 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:21:8
+   |
+21 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:25:8
+   |
+25 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:29:8
+   |
+29 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:33:8
+   |
+33 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:37:8
+   |
+37 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_data`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Publish.rs:41:8
+   |
+41 |	 fn constraint_data(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/RegAck.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/RegAck.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/RegAck.rs:26:8
+   |
+26 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/RegAck.rs:30:8
+   |
+30 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/RegAck.rs:34:8
+   |
+34 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Register.rs:19:8
+   |
+19 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Register.rs:23:8
+   |
+23 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Register.rs:27:8
+   |
+27 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Register.rs:31:8
+   |
+31 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Register.rs:35:8
+   |
+35 |	 fn constraint_topic_name(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:21:8
+   |
+21 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:25:8
+   |
+25 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:29:8
+   |
+29 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:33:8
+   |
+33 |	 fn constraint_topic_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:37:8
+   |
+37 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/SubAck.rs:41:8
+   |
+41 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `any_as_u8_slice`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/TopicDb.rs:91:11
+   |
+91 | unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
+   |	       ^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Subscribe.rs:20:8
+   |
+20 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Subscribe.rs:24:8
+   |
+24 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Subscribe.rs:28:8
+   |
+28 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Subscribe.rs:32:8
+   |
+32 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Subscribe.rs:36:8
+   |
+36 |	 fn constraint_topic_name(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/UnsubAck.rs:17:8
+   |
+17 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/UnsubAck.rs:21:8
+   |
+21 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/UnsubAck.rs:25:8
+   |
+25 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Unsubscribe.rs:20:8
+   |
+20 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Unsubscribe.rs:24:8
+   |
+24 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Unsubscribe.rs:28:8
+   |
+28 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Unsubscribe.rs:32:8
+   |
+32 |	 fn constraint_msg_id(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_topic_name`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Unsubscribe.rs:36:8
+   |
+36 |	 fn constraint_topic_name(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsg.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsg.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsg.rs:26:8
+   |
+26 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsg.rs:30:8
+   |
+30 |	 fn constraint_will_topic(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgReq.rs:15:8
+   |
+15 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgReq.rs:19:8
+   |
+19 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgResp.rs:15:8
+   |
+15 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgResp.rs:19:8
+   |
+19 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgResp.rs:23:8
+   |
+23 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgUpd.rs:16:8
+   |
+16 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgUpd.rs:20:8
+   |
+20 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillMsgUpd.rs:24:8
+   |
+24 |	 fn constraint_will_topic(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopic.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopic.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopic.rs:26:8
+   |
+26 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopic.rs:30:8
+   |
+30 |	 fn constraint_will_topic(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicReq.rs:15:8
+   |
+15 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicReq.rs:19:8
+   |
+19 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicResp.rs:15:8
+   |
+15 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicResp.rs:19:8
+   |
+19 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_return_code`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicResp.rs:23:8
+   |
+23 |	 fn constraint_return_code(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicUpd.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicUpd.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_flags`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicUpd.rs:26:8
+   |
+26 |	 fn constraint_flags(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_will_topic`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/WillTopicUpd.rs:30:8
+   |
+30 |	 fn constraint_will_topic(_val: &String) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_len`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Advertise.rs:18:8
+   |
+18 |	 fn constraint_len(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_msg_type`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Advertise.rs:22:8
+   |
+22 |	 fn constraint_msg_type(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_gw_id`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Advertise.rs:26:8
+   |
+26 |	 fn constraint_gw_id(_val: &u8) -> bool {
+   |	    ^^^^^^^^^^^^^^^^
+
+warning: associated function is never used: `constraint_duration`
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Advertise.rs:30:8
+   |
+30 |	 fn constraint_duration(_val: &u16) -> bool {
+   |	    ^^^^^^^^^^^^^^^^^^^
+
+warning: module `Functions` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:4:9
+  |
+4 | pub mod Functions;
+  |	    ^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `functions`
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+
+warning: module `ConAck` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:5:9
+  |
+5 | pub mod ConAck;
+  |	    ^^^^^^ help: convert the identifier to snake case: `con_ack`
+
+warning: module `Connect` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:6:9
+  |
+6 | pub mod Connect;
+  |	    ^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `connect`
+
+warning: module `Disconnect` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:7:9
+  |
+7 | pub mod Disconnect;
+  |	    ^^^^^^^^^^ help: convert the identifier to snake case: `disconnect`
+
+warning: module `ConnectionDb` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:8:9
+  |
+8 | pub mod ConnectionDb;
+  |	    ^^^^^^^^^^^^ help: convert the identifier to snake case: `connection_db`
+
+warning: module `MessageDb` should have a snake case name
+ --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:9:9
+  |
+9 | pub mod MessageDb;
+  |	    ^^^^^^^^^ help: convert the identifier to snake case: `message_db`
+
+warning: module `MainMachineClient` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:10:9
+   |
+10 | pub mod MainMachineClient;
+   |	     ^^^^^^^^^^^^^^^^^ help: convert the identifier to snake case: `main_machine_client`
+
+warning: module `MsgType` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:11:9
+   |
+11 | pub mod MsgType;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `msg_type`
+
+warning: module `PingReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:12:9
+   |
+12 | pub mod PingReq;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `ping_req`
+
+warning: module `PingResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:13:9
+   |
+13 | pub mod PingResp;
+   |	     ^^^^^^^^ help: convert the identifier to snake case: `ping_resp`
+
+warning: module `PubAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:14:9
+   |
+14 | pub mod PubAck;
+   |	     ^^^^^^ help: convert the identifier to snake case: `pub_ack`
+
+warning: module `PubRel` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:15:9
+   |
+15 | pub mod PubRel;
+   |	     ^^^^^^ help: convert the identifier to snake case: `pub_rel`
+
+warning: module `Publish` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:16:9
+   |
+16 | pub mod Publish;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `publish`
+
+warning: module `RegAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:17:9
+   |
+17 | pub mod RegAck;
+   |	     ^^^^^^ help: convert the identifier to snake case: `reg_ack`
+
+warning: module `Register` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:18:9
+   |
+18 | pub mod Register;
+   |	     ^^^^^^^^ help: convert the identifier to snake case: `register`
+
+warning: module `StateEnum` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:19:9
+   |
+19 | pub mod StateEnum;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case: `state_enum`
+
+warning: module `SubAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:20:9
+   |
+20 | pub mod SubAck;
+   |	     ^^^^^^ help: convert the identifier to snake case: `sub_ack`
+
+warning: module `SubscriberDb` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:21:9
+   |
+21 | pub mod SubscriberDb;
+   |	     ^^^^^^^^^^^^ help: convert the identifier to snake case: `subscriber_db`
+
+warning: module `TopicDb` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:22:9
+   |
+22 | pub mod TopicDb;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `topic_db`
+
+warning: module `Subscribe` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:23:9
+   |
+23 | pub mod Subscribe;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `subscribe`
+
+warning: module `Transfer` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:24:9
+   |
+24 | pub mod Transfer;
+   |	     ^^^^^^^^ help: convert the identifier to snake case: `transfer`
+
+warning: module `UnsubAck` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:25:9
+   |
+25 | pub mod UnsubAck;
+   |	     ^^^^^^^^ help: convert the identifier to snake case: `unsub_ack`
+
+warning: module `Unsubscribe` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:26:9
+   |
+26 | pub mod Unsubscribe;
+   |	     ^^^^^^^^^^^ help: convert the identifier to snake case (notice the capitalization): `unsubscribe`
+
+warning: module `WillMsg` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:27:9
+   |
+27 | pub mod WillMsg;
+   |	     ^^^^^^^ help: convert the identifier to snake case: `will_msg`
+
+warning: module `WillMsgReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:28:9
+   |
+28 | pub mod WillMsgReq;
+   |	     ^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_req`
+
+warning: module `WillMsgResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:29:9
+   |
+29 | pub mod WillMsgResp;
+   |	     ^^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_resp`
+
+warning: module `WillMsgUpd` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:30:9
+   |
+30 | pub mod WillMsgUpd;
+   |	     ^^^^^^^^^^ help: convert the identifier to snake case: `will_msg_upd`
+
+warning: module `WillTopic` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:31:9
+   |
+31 | pub mod WillTopic;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case: `will_topic`
+
+warning: module `WillTopicReq` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:32:9
+   |
+32 | pub mod WillTopicReq;
+   |	     ^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_req`
+
+warning: module `WillTopicResp` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:33:9
+   |
+33 | pub mod WillTopicResp;
+   |	     ^^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_resp`
+
+warning: module `WillTopicUpd` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:34:9
+   |
+34 | pub mod WillTopicUpd;
+   |	     ^^^^^^^^^^^^ help: convert the identifier to snake case: `will_topic_upd`
+
+warning: module `Advertise` should have a snake case name
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/lib.rs:35:9
+   |
+35 | pub mod Advertise;
+   |	     ^^^^^^^^^ help: convert the identifier to snake case: `advertise`
+
+warning: unused `Result` that must be used
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:109:13
+    |
+109 | / 	    transfer
+110 | | 		.connection_db
+111 | | 		.update(transfer.peer, &old_machine, &new_machine);
+    | |___________________________________________________________________^
+    |
+    = note: `#[warn(unused_must_use)]` on by default
+    = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: unused `Result` that must be used
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:131:21
+    |
+131 |			  transfer.connection_db.create(transfer.peer, &new_machine);
+    |			  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: unused `Result` that must be used
+   --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:142:21
+    |
+142 |			  transfer.connection_db.create(transfer.peer, &new_machine);
+    |			  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+
+warning: unused `Result` that must be used
+  --> /home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConAck.rs:16:39
+   |
+16 | #[derive(Debug, Clone, Copy, Getters, Setters, MutGetters, CopyGetters, Default)]
+   |					   ^^^^^^^
+   |
+   = note: this `Result` may be an `Err` variant, which should be handled
+   = note: this warning originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: 161 warnings emitted
+
+warning: unused import: `std::mem`
+ --> src/main.rs:7:5
+  |
+7 | use std::mem;
+  |	^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused `#[macro_use]` import
+ --> src/main.rs:8:1
+  |
+8 | #[macro_use]
+  | ^^^^^^^^^^^^
+
+warning: unused imports: `BufMut`, `BytesMut`
+  --> src/main.rs:10:13
+   |
+10 | use bytes::{BufMut, BytesMut};
+   |		 ^^^^^^  ^^^^^^^^
+
+warning: unused imports: `Duration`, `Instant`
+  --> src/main.rs:12:17
+   |
+12 | use std::time::{Duration, Instant};
+   |		     ^^^^^^^^  ^^^^^^^
+
+warning: unused import: `Mutex`
+  --> src/main.rs:14:22
+   |
+14 | use std::sync::{Arc, Mutex};
+   |			  ^^^^^
+
+warning: unused import: `std::thread`
+  --> src/main.rs:15:5
+   |
+15 | use std::thread;
+   |	 ^^^^^^^^^^^
+
+warning: unused import: `SocketAddrV4`
+  --> src/main.rs:24:29
+   |
+24 | use std::net::{ SocketAddr, SocketAddrV4};
+   |				 ^^^^^^^^^^^^
+
+warning: unused imports: `Advertise::Advertise`, `MsgType::MsgType`, `Publish::Publish`, `Subscribe::Subscribe`
+  --> src/main.rs:51:5
+   |
+51 |	 Advertise::Advertise,
+   |	 ^^^^^^^^^^^^^^^^^^^^
+...
+58 |	 Subscribe::Subscribe,
+   |	 ^^^^^^^^^^^^^^^^^^^^
+59 |	 Publish::Publish,
+   |	 ^^^^^^^^^^^^^^^^
+60 |	 MsgType::MsgType,
+   |	 ^^^^^^^^^^^^^^^^
+
+warning: unused macro definition
+  --> src/main.rs:76:1
+   |
+76 | / macro_rules! dbg_buf {
+77 | |	   ($buf:ident, $size:ident) => {
+78 | |	       let mut i: usize = 0;
+79 | |	       eprint!("[{}:{}] ", function!(), line!());
+...  |
+85 | |	   };
+86 | | }
+   | |_^
+   |
+   = note: `#[warn(unused_macros)]` on by default
+
+warning: unused variable: `server_address`
+   --> src/main.rs:350:9
+    |
+350 |	  let server_address: SocketAddr = format!("{}:61000", LOCAL_IP).parse().unwrap();
+    |	      ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_server_address`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: value assigned to `to_send` is never read
+   --> src/main.rs:134:17
+    |
+134 |		  mut to_send,
+    |		      ^^^^^^^
+    |
+    = note: `#[warn(unused_assignments)]` on by default
+    = help: maybe it is overwritten before being read?
+
+warning: unused variable: `keep_alive`
+   --> src/main.rs:214:13
+    |
+214 |	      let keep_alive = 1;
+    |		  ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_keep_alive`
+
+warning: static is never used: `BROADCAST_INTERVAL`
+  --> src/main.rs:41:1
+   |
+41 | static BROADCAST_INTERVAL: u8 = 8;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: function is never used: `task_that_takes_a_second`
+   --> src/main.rs:269:10
+    |
+269 | async fn task_that_takes_a_second() {
+    |	       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `task_that_takes_a_second2`
+   --> src/main.rs:274:10
+    |
+274 | async fn task_that_takes_a_second2() {
+    |	       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function is never used: `timing_wheel`
+   --> src/main.rs:279:10
+    |
+279 | async fn timing_wheel() {
+    |	       ^^^^^^^^^^^^
+
+warning: function is never used: `timing_wheel2`
+   --> src/main.rs:287:10
+    |
+287 | async fn timing_wheel2() {
+    |	       ^^^^^^^^^^^^^
+
+warning: crate `clientV2` should have a snake case name
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+  = help: convert the identifier to snake case: `client_v2`
+
+warning: unused `Result` that must be used
+   --> src/main.rs:97:9
+    |
+97  | / 	match $val {
+98  | | 	    tmp => {
+99  | | 		// replace file!() with function!()
+100 | | 		eprintln!("[{}:{}] {} = {:#?}",
+...   |
+103 | | 	    }
+104 | | 	}
+    | |_________^
+...
+196 |		    dbg_fn!(verify_suback2(&buf, size));
+    |		    ------------------------------------ in this macro invocation
+    |
+    = note: `#[warn(unused_must_use)]` on by default
+    = note: this `Result` may be an `Err` variant, which should be handled
+    = note: this warning originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: 19 warnings emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.06s
+     Running `target/debug/clientV2`
+[client_lib::Functions::connect:198] connect.clone() = Connect {
+    len: 36,
+    msg_type: 0x4,
+    flags: 0b00000100,
+    protocol_id: 1,
+    duration: 30,
+    client_id: "exofense/IhjJeydkL3buWLFCTg-8G",
+}
+[client_lib::Functions::connect:200] bytes_buf.clone() = b"$\x04\x04\x01\0\x1eexofense/IhjJeydkL3buWLFCTg-8G"
+[src/main.rs:163] buf2.clone() = b"$\x04\x04\x01\0\x1eexofense/IhjJeydkL3buWLFCTg-8G"
+[client_lib::Functions::verify_connack2:234] msg_type = CONNACK
+[client_lib::Functions::verify_connack2:236] conn_ack.clone() = ConAck {
+    len: 3,
+    msg_type: 0x5,
+    return_code: 0,
+}
+22:52:24 [INFO] recv_from: 127.0.0.1:60000
+22:52:24 [INFO] recv_from: 127.0.0.1:60000
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:181] subscribe.clone() = Subscribe {
+    len: 10,
+    msg_type: 0x12,
+    flags: 0b00100100,
+    msg_id: 0,
+    topic_name: "hello",
+}
+[client_lib::Functions::verify_suback2:260] sub_ack.clone() = SubAck {
+    len: 8,
+    msg_type: 0x13,
+    flags: 0b00101111,
+    topic_id: 1,
+    msg_id: 0,
+    return_code: 0,
+}
+[clientV2::Server::run::{{closure}}:196] verify_suback2(&buf, size) = Ok(
+    1,
+)
+22:52:24 [INFO] recv_from: 127.0.0.1:60000
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:165] publish.clone() = Publish {
+    len: 12,
+    msg_type: 0xc,
+    flags: 0b00000100,
+    topic_id: 1,
+    msg_id: 0,
+    data: "hello",
+}
+22:52:24 [INFO] recv_from: 127.0.0.1:60000
+[client_lib::Functions::process_input:96] 0x0C 0x0C 0x04 0x00 0x01 0x00 0x00 0x68 0x65 0x6C 0x6C 0x6F
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConnectionDb.rs:40] key = 127.0.0.1:60000
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/ConnectionDb.rs:43] bytes.clone() = [
+    0,
+]
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:102] old_machine.clone() = MainMachine {
+    machine: StateMachine {
+	state: ACTIVE,
+    },
+}
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:706] publish.clone() = Publish {
+    len: 12,
+    msg_type: 0xc,
+    flags: 0b00000100,
+    topic_id: 1,
+    msg_id: 0,
+    data: "hello",
+}
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:716] subscribers.clone() = None
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/MainMachineClient.rs:717] transfer.message_db.get(msg_key) = Some(
+    [
+	104,
+	101,
+	108,
+	108,
+	111,
+    ],
+)
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:112] old_machine.clone() = MainMachine {
+    machine: StateMachine {
+	state: ACTIVE,
+    },
+}
+[/home/lawrence/work/exofense/Exofense-main/lib/client-lib/src/Functions.rs:113] new_machine.machine.state() = ACTIVE
+^C
+
+lawrence silver ~/work/exofense/Exofense-main/apps/MQTT-SN-Client is 📦 v0.1.0 via 🦀 v1.53.0 took 4s
+❯ exit
+exit
+
+Script done on 2022-01-04 14:52:30-0800
