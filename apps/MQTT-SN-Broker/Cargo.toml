@@ -13,8 +13,8 @@ getset = { path="../../lib/getset" }
 mqtt-sn-lib = { path="../../lib/mqtt-sn-lib" }
 DTLS = {path = "../../lib/DTLS"}
 
-custom_debug = { path="../../lib/custom_debug" }
-modular-bitfield = { path="../../lib/modular-bitfield" }
+custom_debug = "0.5.0"
+modular-bitfield = "0.11"
 tokio = { version="1.0.0", features=["full", "tracing"] }
 tokio-util = { version="0.6.3", features=["full"] }
 tokio-stream = { version="0.1" }
@@ -23,12 +23,12 @@ futures = { version="0.3.0", features=["thread-pool"] }
 serde = { version="1.0", features=["derive"] }
 serde_derive = "1.0"
 serde_json = "1.0"
-bincode = { path="../../lib/bincode-trunk" }
-time = { path="../../lib/time-main" }
-simplelog = { path="../../lib/simplelog" }
-log = { version="0.4.*", features=["std"] }
-num-traits = { path="../../lib/num-traits" }
-num-derive = { path="../../lib/num-derive" }
+bincode = "1.0"
+time = "0.1"
+simplelog = "0.10"
+log = { version = "0.4.*", features = ["std"] }
+num-traits = "0.2"
+num-derive = "0.3"
 arrayref = "0.3.6"
 strum = "0.20"
 strum_macros = "0.20"

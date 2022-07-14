@@ -1,9 +1,5 @@
-// use num;
 use num_derive::FromPrimitive;
 use num_enum::IntoPrimitive;
-
-//#[macro_use]
-//extern crate num_derive;
 
 #[derive(FromPrimitive, IntoPrimitive, PartialEq, Eq, Hash, Debug, Copy, Clone)]
 #[repr(u8)]
@@ -11,7 +7,6 @@ pub enum MsgType {
     ADVERTISE = 0,
     SEARCHGW,
     GWINFO,
-    // Reserved0x03,
     CONNECT = 0x04,
     CONNACK,
     WILLTOPICREQ,
@@ -25,7 +20,6 @@ pub enum MsgType {
     PUBCOMP,
     PUBREC,
     PUBREL,
-    // Reserved0x11,
     SUBSCRIBE = 0x12,
     SUBACK,
     UNSUBSCRIBE,
@@ -33,7 +27,6 @@ pub enum MsgType {
     PINGREQ,
     PINGRESP,
     DISCONNECT,
-    // Reserved0x19,
     WILLTOPICUPD = 0x1A,
     WILLTOPICRESP,
     WILLMSGUPD,
