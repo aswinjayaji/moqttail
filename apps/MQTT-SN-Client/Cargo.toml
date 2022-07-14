@@ -9,9 +9,7 @@ edition = "2018"
 [dependencies]
 rust-fsm = { path = "../../lib/fsm" }
 getset = { path = "../../lib/getset" }
-# mqtt-sn-lib = { path="../../lib/mqtt-sn-lib"}
 client-lib = { path="../../lib/client-lib"}
-# DTLS = {path = "../../lib/DTLS"}
 
 custom_debug = "0.5.0"
 modular-bitfield = "0.11"

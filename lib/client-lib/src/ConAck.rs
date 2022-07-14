@@ -19,7 +19,7 @@ pub struct ConAck {
     pub len: u8,
     #[debug(format = "0x{:x}")]
     pub msg_type: u8,
-    pub return_code: u8, // use enum for print
+    pub return_code: u8, 
 }
 
 impl ConAck {

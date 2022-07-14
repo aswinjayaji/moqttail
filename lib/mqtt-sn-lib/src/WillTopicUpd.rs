@@ -11,7 +11,7 @@ pub struct WillTopicUpd {
     msg_type: u8,
     #[debug(format = "0b{:08b}")]
     flags: u8,
-    will_topic: String, // TODO use enum for topic_name or topic_id
+    will_topic: String,
 }
 
 impl WillTopicUpd {

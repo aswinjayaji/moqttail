@@ -9,7 +9,7 @@ pub struct WillMsgUpd {
     len: u8,
     #[debug(format = "0x{:x}")]
     msg_type: u8,
-    will_topic: String, // TODO use enum for topic_name or topic_id
+    will_topic: String, 
 }
 
 impl WillMsgUpd {
