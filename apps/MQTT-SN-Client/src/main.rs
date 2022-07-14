@@ -4,82 +4,64 @@ use log::*;
 use simplelog::*;
 use std::env;
 use std::error::Error;
-#[macro_use]
-extern crate arrayref;
 use std::str;
-use std::time::{Duration, Instant};
 
-use std::sync::{Arc, Mutex};
-use std::thread;
+use std::sync::Arc;
 
 use tokio::net::UdpSocket;
-use tokio::time;
-use tokio::{ task};
+use tokio::task;
 
-use std::net::{ SocketAddr, SocketAddrV4};
+use std::net::SocketAddr;
 
 use nanoid::nanoid;
 
 const MTU: usize = 1500; 
 const LOCAL_IP: &str = "127.0.0.1";
 
-static BROADCAST_INTERVAL: u8 = 8;
 
 
 use std::io::{self};
 
 use client_lib::{
-    ConnectionDb::ConnectionDb,
-    SubscriberDb::SubscriberDb,
-    Advertise::Advertise,
-    TopicDb::TopicDb,
-    MessageDb::MessageDb,
-    Functions::{process_input,connect,
-        verify_suback2,
-        verify_connack2, publish, subscribe},
-    Subscribe::Subscribe,
-    Publish::Publish,
-    MsgType::MsgType,
+    // ConnectionDb::ConnectionDb,
+    // SubscriberDb::SubscriberDb,
+    // Advertise::Advertise,
+    // TopicDb::TopicDb,
+    // MessageDb::MessageDb,
+    Functions::{
+        // process_input,
+        // verify_suback2, 
+        // subscribe,
+        connect,
+        verify_connack2, 
+        publish},
+    // Subscribe::Subscribe,
+    // Publish::Publish,
+    // MsgType::MsgType,
 };
-macro_rules! function {
-    () => {{
-        fn f() {}
-        fn type_name_of<T>(_: T) -> &'static str {
-            std::any::type_name::<T>()
-        }
-        let name = type_name_of(f);
-        &name[..name.len() - 3]
-    }};
-}
+// macro_rules! function {
+//     () => {{
+//         fn f() {}
+//         fn type_name_of<T>(_: T) -> &'static str {
+//             std::any::type_name::<T>()
+//         }
+//         let name = type_name_of(f);
+//         &name[..name.len() - 3]
+//     }};
+// }
 
-macro_rules! dbg_buf {
-    ($buf:ident, $size:ident) => {
-        let mut i: usize = 0;
-        eprint!("[{}:{}] ", function!(), line!());
-        while i < $size {
-            eprint!("{:#04X?} ", $buf[i]);
-            i += 1;
-        }
-        eprintln!("");
-    };
-}
-macro_rules! dbg_fn {
-    () => {
-        $crate::eprintln!("[{}:{}]", function!(), line!());
-    };
-    ($val:expr $(,)?) => {
-        match $val {
-            tmp => {
-                eprintln!("[{}:{}] {} = {:#?}",
-                    function!(), line!(), stringify!($val), &tmp);
-                tmp
-            }
-        }
-    };
-    ($($val:expr),+ $(,)?) => {
-        ($($dbg_fn!($val)),+,)
-    };
-}
+// macro_rules! dbg_buf {
+//     ($buf:ident, $size:ident) => {
+//         let mut i: usize = 0;
+//         eprint!("[{}:{}] ", function!(), line!());
+//         while i < $size {
+//             eprint!("{:#04X?} ", $buf[i]);
+//             i += 1;
+//         }
+//         eprintln!("");
+//     };
+// }
+
 
 
 
@@ -102,9 +84,9 @@ impl Server {
             mut to_send,
         } = self;
 
-        let peer: SocketAddr = "127.0.0.1:80"
-            .parse()
-            .expect("Unable to parse socket address");
+        // let peer: SocketAddr = "127.0.0.1:80"
+        //     .parse()
+        //     .expect("Unable to parse socket address");
 
         let arc_socket = Arc::new(&socket);
         let clone_socket = Arc::clone(&arc_socket);
@@ -152,29 +134,6 @@ impl Server {
     }
 }
 
-async fn task_that_takes_a_second() {
-    time::sleep(time::Duration::from_secs(1)).await
-}
-
-async fn task_that_takes_a_second2() {
-    time::sleep(time::Duration::from_secs(1)).await
-}
-
-async fn timing_wheel() {
-    let mut interval = time::interval(time::Duration::from_secs(2));
-    for _i in 0..10000 {
-        interval.tick().await;
-        task_that_takes_a_second().await;
-    }
-}
-
-async fn timing_wheel2() {
-    let mut interval = time::interval(time::Duration::from_secs(2));
-    for _i in 0..10000 {
-        interval.tick().await;
-        task_that_takes_a_second2().await;
-    }
-}
 
 
 #[tokio::main]
@@ -201,7 +160,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
         to_send: None,
     };
 
-    let server_address: SocketAddr = format!("{}:61000", LOCAL_IP).parse().unwrap();
 
     let broker_thread = task::spawn(server.run());
     let _ = broker_thread.await?;
