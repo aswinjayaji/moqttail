@@ -14,11 +14,9 @@ use crate::Advertise::Advertise;
 use crate::MsgType::MsgType;
 
 static BROADCAST_INTERVAL: u8 = 8;
-// Boardcast every n minutes
 pub struct BroadcastAdvertise {
     pub socket: UdpSocket,
     pub addr: SocketAddr,
-    // buf: Vec<u8>,
     pub buf: [u8; MTU],
     pub to_send: Option<(usize, SocketAddr)>,
     pub connection_db: ConnectionDb,

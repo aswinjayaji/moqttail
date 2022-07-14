@@ -8,7 +8,7 @@ pub struct SearchGw {
     pub len: u8,
     #[debug(format = "0x{:x}")]
     pub msg_type: u8,
-    pub radius: u8, // use enum for print
+    pub radius: u8, 
 }
 
 impl SearchGw {

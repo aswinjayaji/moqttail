@@ -12,7 +12,7 @@ pub struct Register {
     pub msg_type: u8,
     topic_id: u16,
     pub msg_id: u16,
-    pub topic_name: String, // TODO use enum for topic_name or topic_id
+    pub topic_name: String, 
 }
 
 impl Register {

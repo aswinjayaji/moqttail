@@ -14,7 +14,6 @@ pub struct GwInfo {
     gw_add: String,
 }
 
-// TODO
 impl GwInfo {
     pub fn constraint_len(_val: &u8) -> bool {
         //dbg!(_val);

@@ -13,7 +13,7 @@ pub struct Unsubscribe {
     #[debug(format = "0b{:08b}")]
     flags: u8,
     pub msg_id: u16,
-    pub topic_name: String, // TODO use enum for topic_name or topic_id
+    pub topic_name: String, 
 }
 
 impl Unsubscribe {

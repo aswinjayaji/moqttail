@@ -24,8 +24,6 @@ use mqtt_sn_lib::{
     Transfer::Transfer, Functions::process_input, MTU,BroadcastAdvertise::BroadcastAdvertise
 };
 
-use DTLS::dtls_server::DtlsServer;
-
 
 macro_rules! function {
     () => {{
@@ -208,15 +206,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
     };
 
     let server_address: SocketAddr = "0.0.0.0:61000".parse().unwrap();
-    let dtls_server = DtlsServer {
-        server_address,
-        buf: [0u8; MTU],
-        to_send: None,
-        connection_db: ConnectionDb::new("/tmp/exo-sn-db3".to_string()).unwrap(),
-        subscriber_db: SubscriberDb::new(),
-        topic_db: TopicDb::new(),
-    };
-
     let addr = SocketAddrV4::new(IP_ALL.into(), DEFAULT_MULTICAST_PORT);
 
     let multi_addr = SocketAddrV4::new(
@@ -250,9 +239,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let resp2 = task::spawn(timing_wheel2());
     
     let broker_thread = task::spawn(server.run());
-    let broker_thread2 = task::spawn(dtls_server.run());
-
-    let _ = broker_thread2.await?;
     let _ = broker_thread.await?;
     
     let _ = resp1.await?;

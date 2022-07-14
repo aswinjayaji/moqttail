@@ -17,7 +17,6 @@ pub struct Connect {
     pub client_id: String,
 }
 
-// TODO
 impl Connect {
     pub fn constraint_len(_val: &u8) -> bool {
         //dbg!(_val);

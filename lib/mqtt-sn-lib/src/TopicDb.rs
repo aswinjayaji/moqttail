@@ -1,5 +1,4 @@
-// Store <Topic Name> -> <Topic Id> in hashmap
-// No duplicates allowed
+
 use std::collections::HashMap;
 use custom_debug::Debug;
 use std::net::SocketAddr;
@@ -10,8 +9,6 @@ pub struct TopicDb {
     hash_map: HashMap<String, u16>,
 }
 
-// TODO replace u16 with generic <T>
-// TODO add comments
 impl TopicDb {
     pub fn new() -> TopicDb {
         let hash_map:HashMap<String, u16> = HashMap::new();
@@ -21,9 +18,7 @@ impl TopicDb {
         new_db
     }
 
-    // Create a new entry, duplicates are not allowed.
-    // if <topic name> exist, return found <topic id>,
-    // else insert and return new <topic id>
+    
     pub fn create(&mut self, topic_string: &String, new_topic_id: u16) -> u16 {
         match self.hash_map.get(topic_string) {
             Some(old_topic_id) => {
@@ -87,7 +82,7 @@ pub fn test_subs_db() {
     db.delete(1, server);
 }
 
-// TODO move into a lib, but only use for prototype
+
 unsafe fn any_as_u8_slice<T: Sized>(p: &T) -> &[u8] {
     ::std::slice::from_raw_parts(
         (p as *const T) as *const u8,
