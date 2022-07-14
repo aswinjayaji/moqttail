@@ -90,7 +90,7 @@ struct Server {
 }
 
 fn generate_client_id() -> String {
-    format!("exofense/{}", nanoid!())
+    format!("moqttail/{}", nanoid!())
 }
 
 
