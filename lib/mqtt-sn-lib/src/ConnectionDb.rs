@@ -20,7 +20,7 @@ impl ConnectionDb {
     ) -> sled::Result<Result<(), sled::CompareAndSwapError>> {
         dbg!(key);
         let value = bincode::serialize(&input_value).unwrap();
-        dbg!(value.clone());
+        //dbg!(value.clone());
         let result = self.db.compare_and_swap(
             key.to_string(),
             None as Option<&[u8]>, 
@@ -32,7 +32,7 @@ impl ConnectionDb {
         dbg!(key);
         match self.db.get(key.to_string()).unwrap() {
             Some(bytes) => {
-                dbg!(bytes.clone());
+                //dbg!(bytes.clone());
                 let machine: MainMachine = bincode::deserialize(&bytes).unwrap();
                 Some(machine)
             }

@@ -82,7 +82,7 @@ fn verify_publish(
             publish.try_write(&mut bytes_buf);
             for (sub_socket_addr, _) in subs.peers {
                 transfer.egress_buffers.push((sub_socket_addr, bytes_buf.clone()));
-            }
+            }   
             true
         }
         None => false,

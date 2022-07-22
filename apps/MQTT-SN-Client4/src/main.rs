@@ -145,7 +145,7 @@ impl Server {
         //     println!("standard : {}",s);
         // } 
 
-        let buf2 = publish(1,25, "sending to temp client".to_string(), 1);
+        let buf2 = publish(1,25, "27 C".to_string(), 1);
         clone_socket.send(&buf2).await?;
         
         Ok(())

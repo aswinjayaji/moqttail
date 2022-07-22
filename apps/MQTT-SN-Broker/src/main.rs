@@ -88,7 +88,7 @@ impl Server {
         
         loop {
             while let Some(buf) = transfer.egress_buffers.pop() {
-                dbg!(buf.clone());
+                //dbg!(buf.clone());
                 let (peer, bytes_buf) = buf;
                 let amt = socket.send_to(&bytes_buf[..], &peer).await?;
                 info!("send_to {} to {}", amt, peer);
